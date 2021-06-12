@@ -5,7 +5,11 @@ import { fetchQuestions, Difficulty, QuestionState } from './api';
 // https://opentdb.com/api.php?amount=20&category=18&type=multiple
 
 /**
- * Left of at 48min 25 sec in the video https://www.youtube.com/watch?v=F2JCjVSZlG0
+ * On 12 June. Functionality is complete. Do styling on your own.
+ * Also think about implementing a screen where users can select a category and difficulty level.
+ * Should I let users select a number of questions too?
+ * Just in case you need to refer back to the video:
+ * Left of at 54min 55 sec in the video https://www.youtube.com/watch?v=F2JCjVSZlG0
  */
 
 const TOTAL_QUESTIONS = 20;
@@ -38,9 +42,32 @@ const App = () => {
     setLoading(false);
   };
 
-  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
+  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!gameOver) {
+      const answer = e.currentTarget.value;
+      const correct = questions[number].correct_answer === answer;
+      if (correct) setScore((prev) => prev + 1);
 
-  const nextQuestion = () => {};
+      const answerObject = {
+        question: questions[number].question,
+        answer,
+        correct,
+        correctAnswer: questions[number].correct_answer,
+      };
+
+      setUserAnswers((prev) => [...prev, answerObject]);
+    }
+  };
+
+  const nextQuestion = () => {
+    const next = number + 1;
+
+    if (next === TOTAL_QUESTIONS) {
+      setGameOver(true);
+    } else {
+      setNumber(next);
+    }
+  };
 
   return (
     <div className='App'>
@@ -51,7 +78,7 @@ const App = () => {
         </button>
       ) : null}
 
-      {!gameOver ? <p className='score'>Score</p> : null}
+      {!gameOver ? <p className='score'>Score: {score}</p> : null}
       {loading ? <p className='score'>Loading Questions ....</p> : null}
       {!loading && !gameOver ? (
         <QuestionCard
