@@ -4,14 +4,6 @@ import { fetchQuestions, Difficulty, QuestionState } from './api';
 // here is the link for the trivia api
 // https://opentdb.com/api.php?amount=20&category=18&type=multiple
 
-/**
- * On 12 June. Functionality is complete. Do styling on your own.
- * Also think about implementing a screen where users can select a category and difficulty level.
- * Should I let users select a number of questions too?
- * Just in case you need to refer back to the video:
- * Left of at 54min 55 sec in the video https://www.youtube.com/watch?v=F2JCjVSZlG0
- */
-
 const TOTAL_QUESTIONS = 20;
 
 type AnswerObject = {
