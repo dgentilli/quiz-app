@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import QuestionCard from './QuestionCard';
 import { fetchQuestions, Difficulty, QuestionState } from '../api';
 
-const TOTAL_QUESTIONS = 20;
+const TOTAL_QUESTIONS = 3; //change this to a low number for testing
 
 type AnswerObject = {
   question: string;
