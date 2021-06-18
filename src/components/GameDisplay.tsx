@@ -80,7 +80,14 @@ const GameDisplay: React.FC<Props> = ({
     <div className='App'>
       <h1>Trivia Game</h1>
       {gameOver ||
-        (userAnswers.length === TOTAL_QUESTIONS && setSubmitted(false))}
+        (userAnswers.length === TOTAL_QUESTIONS && (
+          <div>
+            <p>
+              Final Score: {score} / {TOTAL_QUESTIONS}
+            </p>
+            <button onClick={() => setSubmitted(false)}>Start Over</button>
+          </div>
+        ))}
 
       {!gameOver ? <p className='score'>Score: {score}</p> : null}
       {loading ? <p className='score'>Loading Questions ....</p> : null}
