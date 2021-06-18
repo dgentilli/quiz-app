@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SelectCategory from './SelectCategory';
 import SelectDifficultyLevel from './SelectDifficultyLevel';
 
@@ -17,6 +17,16 @@ const Welcome: React.FC<Props> = ({
   category,
   difficulty,
 }) => {
+  const [userMessage, setUserMessage] = useState<null | string>(null);
+  const handleSubmit = () => {
+    if (category && difficulty) {
+      setUserMessage(null);
+      setSubmitted(true);
+    } else {
+      setUserMessage('Please select a category and difficulty level');
+    }
+  };
+
   return (
     <div>
       <h1>This is Welcome!</h1>
@@ -26,7 +36,8 @@ const Welcome: React.FC<Props> = ({
         difficulty={difficulty}
       />
 
-      <button onClick={() => setSubmitted(true)}>Submit Choices</button>
+      <button onClick={handleSubmit}>Submit Choices</button>
+      {userMessage && <p>{userMessage}</p>}
     </div>
   );
 };
