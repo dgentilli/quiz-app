@@ -11,13 +11,18 @@ type AnswerObject = {
   correctAnswer: string;
 };
 
-const GameDisplay = () => {
-  const [loading, setLoading] = useState(false);
+type Props = {
+  category: string | null;
+  difficulty: string | null;
+};
+
+const GameDisplay: React.FC<Props> = ({ category, difficulty }) => {
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const startGame = async () => {
     setLoading(true);

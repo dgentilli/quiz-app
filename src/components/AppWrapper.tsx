@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GameDisplay from './GameDisplay';
+import Welcome from './Welcome';
 
 const AppWrapper = () => {
-  return <GameDisplay />;
+  const [category, setCategory] = useState('science');
+  const [difficulty, setDifficulty] = useState('easy');
+  const [userMessage, setUserMessage] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  return (
+    <div>
+      {category && difficulty && submitted ? (
+        <GameDisplay category={category} difficulty={difficulty} />
+      ) : (
+        <Welcome
+          setSubmitted={setSubmitted}
+          setDifficulty={setDifficulty}
+          setCategory={setCategory}
+        />
+      )}
+    </div>
+  );
 };
 
 export default AppWrapper;
