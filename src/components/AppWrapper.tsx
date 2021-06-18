@@ -11,7 +11,11 @@ const AppWrapper = () => {
   return (
     <div>
       {category && difficulty && submitted ? (
-        <GameDisplay category={category} difficulty={difficulty} />
+        <GameDisplay
+          category={category}
+          difficulty={difficulty}
+          setSubmitted={setSubmitted}
+        />
       ) : (
         <Welcome
           setSubmitted={setSubmitted}

@@ -14,9 +14,14 @@ type AnswerObject = {
 type Props = {
   category: string | null;
   difficulty: string | null;
+  setSubmitted: Function;
 };
 
-const GameDisplay: React.FC<Props> = ({ category, difficulty }) => {
+const GameDisplay: React.FC<Props> = ({
+  category,
+  difficulty,
+  setSubmitted,
+}) => {
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
@@ -24,18 +29,25 @@ const GameDisplay: React.FC<Props> = ({ category, difficulty }) => {
   const [gameOver, setGameOver] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  const startGame = async () => {
-    setLoading(true);
-    setGameOver(false);
+  useEffect(() => {
+    const startGame = async () => {
+      setLoading(true);
+      setGameOver(false);
 
-    const newQuestions = await fetchQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
-    //TO DO: Add try / catch block for error handling. Probably do this in the api file.
-    setQuestions(newQuestions);
-    setScore(0);
-    setUserAnswers([]);
-    setNumber(0);
-    setLoading(false);
-  };
+      const newQuestions = await fetchQuestions(
+        TOTAL_QUESTIONS,
+        Difficulty.EASY
+      );
+      //TO DO: Add try / catch block for error handling. Probably do this in the api file.
+      setQuestions(newQuestions);
+      setScore(0);
+      setUserAnswers([]);
+      setNumber(0);
+      setLoading(false);
+    };
+
+    startGame();
+  }, []);
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver) {
@@ -67,11 +79,8 @@ const GameDisplay: React.FC<Props> = ({ category, difficulty }) => {
   return (
     <div className='App'>
       <h1>Trivia Game</h1>
-      {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-        <button className='start' onClick={startGame}>
-          Start
-        </button>
-      ) : null}
+      {gameOver ||
+        (userAnswers.length === TOTAL_QUESTIONS && setSubmitted(false))}
 
       {!gameOver ? <p className='score'>Score: {score}</p> : null}
       {loading ? <p className='score'>Loading Questions ....</p> : null}
