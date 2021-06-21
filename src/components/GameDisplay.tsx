@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import QuestionCard from './QuestionCard';
-import { fetchQuestions, Difficulty, QuestionState } from '../api';
+import { fetchQuestions, QuestionState } from '../api';
 
-const TOTAL_QUESTIONS = 3; //change this to a low number for testing
+const TOTAL_QUESTIONS = 15; //change this to a low number for testing
 
 type AnswerObject = {
   question: string;
@@ -12,7 +12,7 @@ type AnswerObject = {
 };
 
 type Props = {
-  category: string | null;
+  category: number | null;
   difficulty: string | null;
   setSubmitted: Function;
 };
@@ -36,7 +36,8 @@ const GameDisplay: React.FC<Props> = ({
 
       const newQuestions = await fetchQuestions(
         TOTAL_QUESTIONS,
-        Difficulty.EASY
+        difficulty,
+        category
       );
       //TO DO: Add try / catch block for error handling. Probably do this in the api file.
       setQuestions(newQuestions);
@@ -47,7 +48,7 @@ const GameDisplay: React.FC<Props> = ({
     };
 
     startGame();
-  }, []);
+  }, [category, difficulty]);
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver) {

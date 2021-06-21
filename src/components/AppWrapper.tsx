@@ -3,12 +3,9 @@ import GameDisplay from './GameDisplay';
 import Welcome from './Welcome';
 
 const AppWrapper = () => {
-  const [category, setCategory] = useState<any>(null);
-  const [difficulty, setDifficulty] = useState<any>(null);
+  const [category, setCategory] = useState<number | null>(null);
+  const [difficulty, setDifficulty] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
-
-  console.log({ category });
-  console.log({ difficulty });
 
   return (
     <div>
