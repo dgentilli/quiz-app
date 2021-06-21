@@ -6,8 +6,8 @@ type Props = {
   setSubmitted: Function;
   setDifficulty: Function;
   setCategory: Function;
-  category: any;
-  difficulty: any;
+  category: number | null;
+  difficulty: string | null;
 };
 
 const Welcome: React.FC<Props> = ({
