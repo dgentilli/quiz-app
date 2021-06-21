@@ -3,14 +3,10 @@ import React from 'react';
 const difficultyLevels: string[] = ['easy', 'medium', 'hard'];
 
 type Props = {
-  difficulty: any;
   setDifficulty: Function;
 };
 
-const SelectDifficultyLevel: React.FC<Props> = ({
-  difficulty,
-  setDifficulty,
-}) => {
+const SelectDifficultyLevel: React.FC<Props> = ({ setDifficulty }) => {
   return (
     <div>
       <select

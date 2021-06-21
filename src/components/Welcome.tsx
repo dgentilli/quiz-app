@@ -30,11 +30,8 @@ const Welcome: React.FC<Props> = ({
   return (
     <div>
       <h1>This is Welcome!</h1>
-      <SelectCategory setCategory={setCategory} category={category} />
-      <SelectDifficultyLevel
-        setDifficulty={setDifficulty}
-        difficulty={difficulty}
-      />
+      <SelectCategory setCategory={setCategory} />
+      <SelectDifficultyLevel setDifficulty={setDifficulty} />
 
       <button onClick={handleSubmit}>Submit Choices</button>
       {userMessage && <p>{userMessage}</p>}

@@ -49,10 +49,9 @@ const allCategories: { id: number; name: string }[] = [
 
 type Props = {
   setCategory: Function;
-  category: any;
 };
 
-const SelectCategory: React.FC<Props> = ({ setCategory, category }) => {
+const SelectCategory: React.FC<Props> = ({ setCategory }) => {
   return (
     <div>
       <select
