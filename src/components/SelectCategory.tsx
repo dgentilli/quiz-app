@@ -56,13 +56,10 @@ const SelectCategory: React.FC<Props> = ({ setCategory, category }) => {
   return (
     <div>
       <select
-        value={category}
         onChange={(e) => setCategory(e.target.value)}
         style={{ width: 200, marginBottom: 10 }}
       >
-        <option disabled selected hidden>
-          Choose a Category
-        </option>
+        <option hidden>Choose a Category</option>
         {allCategories.map((item) => (
           <option key={item.id} value={item.id} style={{ width: 200 }}>
             {item.name}

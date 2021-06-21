@@ -14,13 +14,10 @@ const SelectDifficultyLevel: React.FC<Props> = ({
   return (
     <div>
       <select
-        value={difficulty}
         onChange={(e) => setDifficulty(e.target.value)}
         style={{ width: 200, marginBottom: 10 }}
       >
-        <option disabled hidden selected>
-          Select Difficulty Level
-        </option>
+        <option hidden>Select Difficulty Level</option>
         {difficultyLevels.map((item) => (
           <option key={item} value={item} style={{ width: 200 }}>
             {item}
