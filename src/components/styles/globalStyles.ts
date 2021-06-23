@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const WelcomeWrapper = styled.div`
+export const DefaultWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

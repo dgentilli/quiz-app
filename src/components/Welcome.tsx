@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SelectCategory from './SelectCategory';
 import SelectDifficultyLevel from './SelectDifficultyLevel';
-import { WelcomeWrapper, HeaderWrapper, Spacer } from './styles/welcomeStyles';
+import { DefaultWrapper, HeaderWrapper, Spacer } from './styles/globalStyles';
 
 type Props = {
   setSubmitted: Function;
@@ -29,7 +29,7 @@ const Welcome: React.FC<Props> = ({
   };
 
   return (
-    <WelcomeWrapper>
+    <DefaultWrapper>
       <HeaderWrapper>Welcome to the Trivia Game!</HeaderWrapper>
       <SelectCategory setCategory={setCategory} />
       <Spacer />
@@ -37,7 +37,7 @@ const Welcome: React.FC<Props> = ({
       <Spacer />
       <button onClick={handleSubmit}>Submit Choices</button>
       {userMessage && <p>{userMessage}</p>}
-    </WelcomeWrapper>
+    </DefaultWrapper>
   );
 };
 
