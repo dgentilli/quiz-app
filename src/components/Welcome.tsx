@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import SelectCategory from './SelectCategory';
 import SelectDifficultyLevel from './SelectDifficultyLevel';
-import { DefaultWrapper, HeaderWrapper, Spacer } from './styles/globalStyles';
+import {
+  DefaultWrapper,
+  HeaderWrapper,
+  Spacer,
+  Button,
+} from './styles/globalStyles';
 
 type Props = {
   setSubmitted: Function;
@@ -35,7 +40,7 @@ const Welcome: React.FC<Props> = ({
       <Spacer />
       <SelectDifficultyLevel setDifficulty={setDifficulty} />
       <Spacer />
-      <button onClick={handleSubmit}>Submit Choices</button>
+      <Button onClick={handleSubmit}>Submit Choices</Button>
       {userMessage && <p>{userMessage}</p>}
     </DefaultWrapper>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QuestionCard from './QuestionCard';
 import { fetchQuestions, QuestionState } from '../api';
-import { DefaultWrapper } from './styles/globalStyles';
+import { DefaultWrapper, Button } from './styles/globalStyles';
 
 const TOTAL_QUESTIONS = 15; //change this to a low number for testing
 
@@ -87,7 +87,7 @@ const GameDisplay: React.FC<Props> = ({
             <p>
               Final Score: {score} / {TOTAL_QUESTIONS}
             </p>
-            <button onClick={() => setSubmitted(false)}>Start Over</button>
+            <Button onClick={() => setSubmitted(false)}>Start Over</Button>
           </div>
         ))}
 
@@ -107,7 +107,7 @@ const GameDisplay: React.FC<Props> = ({
       !gameOver &&
       userAnswers.length === number + 1 &&
       number !== TOTAL_QUESTIONS - 1 ? (
-        <button onClick={nextQuestion}>Next Question</button>
+        <Button onClick={nextQuestion}>Next Question</Button>
       ) : null}
     </DefaultWrapper>
   );

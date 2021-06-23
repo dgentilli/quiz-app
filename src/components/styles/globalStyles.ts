@@ -20,3 +20,13 @@ export const Spacer = styled.div`
   width: 100%;
   height: 0.5rem;
 `;
+
+export const Button = styled.button`
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  border-color: white;
+  border-width: 1px;
+  border-radius: 4px;
+  color: #333;
+`;
