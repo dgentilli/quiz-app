@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QuestionCard from './QuestionCard';
 import { fetchQuestions, QuestionState } from '../api';
+import { DefaultWrapper } from './styles/globalStyles';
 
 const TOTAL_QUESTIONS = 15; //change this to a low number for testing
 
@@ -78,7 +79,7 @@ const GameDisplay: React.FC<Props> = ({
   };
 
   return (
-    <div className='App'>
+    <DefaultWrapper>
       <h1>Trivia Game</h1>
       {gameOver ||
         (userAnswers.length === TOTAL_QUESTIONS && (
@@ -108,7 +109,7 @@ const GameDisplay: React.FC<Props> = ({
       number !== TOTAL_QUESTIONS - 1 ? (
         <button onClick={nextQuestion}>Next Question</button>
       ) : null}
-    </div>
+    </DefaultWrapper>
   );
 };
 
