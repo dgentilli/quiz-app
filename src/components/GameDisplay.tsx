@@ -4,7 +4,7 @@ import { fetchQuestions, QuestionState } from '../api';
 import { DefaultWrapper, Button, HeaderWrapper } from './styles/globalStyles';
 import { QuestionCardParagraph } from './styles/questionStyles';
 
-const TOTAL_QUESTIONS = 3; //change this to a low number for testing
+const TOTAL_QUESTIONS = 15; //change this to a low number for testing
 
 type AnswerObject = {
   question: string;
