@@ -88,11 +88,11 @@ const GameDisplay: React.FC<Props> = ({
               Final Score: {score} / {TOTAL_QUESTIONS}
             </p>
             <Button onClick={() => setSubmitted(false)}>Start Over</Button>
+            {!gameOver ? <p className='score'>Score: {score}</p> : null}
+            {loading ? <p className='score'>Loading Questions ....</p> : null}
           </div>
         ))}
 
-      {!gameOver ? <p className='score'>Score: {score}</p> : null}
-      {loading ? <p className='score'>Loading Questions ....</p> : null}
       {!loading && !gameOver ? (
         <QuestionCard
           questionNr={number + 1}
