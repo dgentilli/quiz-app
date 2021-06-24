@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import QuestionCard from './QuestionCard';
 import { fetchQuestions, QuestionState } from '../api';
 import { DefaultWrapper, Button, HeaderWrapper } from './styles/globalStyles';
+import { QuestionCardParagraph } from './styles/questionStyles';
 
-const TOTAL_QUESTIONS = 15; //change this to a low number for testing
+const TOTAL_QUESTIONS = 3; //change this to a low number for testing
 
 type AnswerObject = {
   question: string;
@@ -88,10 +89,14 @@ const GameDisplay: React.FC<Props> = ({
               Final Score: {score} / {TOTAL_QUESTIONS}
             </p>
             <Button onClick={() => setSubmitted(false)}>Start Over</Button>
-            {!gameOver ? <p className='score'>Score: {score}</p> : null}
-            {loading ? <p className='score'>Loading Questions ....</p> : null}
           </div>
         ))}
+      {userAnswers.length < TOTAL_QUESTIONS ? (
+        <QuestionCardParagraph>Score: {score}</QuestionCardParagraph>
+      ) : null}
+      {loading ? (
+        <QuestionCardParagraph>Loading Questions ....</QuestionCardParagraph>
+      ) : null}
 
       {!loading && !gameOver ? (
         <QuestionCard
