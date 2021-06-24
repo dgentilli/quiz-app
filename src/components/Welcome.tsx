@@ -8,6 +8,8 @@ import {
   Button,
 } from './styles/globalStyles';
 
+import { QuestionCardParagraph } from './styles/questionStyles';
+
 type Props = {
   setSubmitted: Function;
   setDifficulty: Function;
@@ -41,7 +43,9 @@ const Welcome: React.FC<Props> = ({
       <SelectDifficultyLevel setDifficulty={setDifficulty} />
       <Spacer />
       <Button onClick={handleSubmit}>Submit Choices</Button>
-      {userMessage && <p>{userMessage}</p>}
+      {userMessage && (
+        <QuestionCardParagraph>{userMessage}</QuestionCardParagraph>
+      )}
     </DefaultWrapper>
   );
 };
