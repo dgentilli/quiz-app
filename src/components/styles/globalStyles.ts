@@ -5,8 +5,7 @@ export const DefaultWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  width: 100vw;
-  background: linear-gradient(#e66465, #9198e5);
+  min-width: 100vw;
 `;
 
 export const HeaderWrapper = styled.h1`
