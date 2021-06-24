@@ -30,6 +30,7 @@ const GameDisplay: React.FC<Props> = ({
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const startGame = async () => {
@@ -42,7 +43,11 @@ const GameDisplay: React.FC<Props> = ({
         category
       );
       //TO DO: Add try / catch block for error handling. Probably do this in the api file.
-      setQuestions(newQuestions);
+      if (newQuestions.length > 0) {
+        setQuestions(newQuestions);
+      } else {
+        setError(true);
+      }
       setScore(0);
       setUserAnswers([]);
       setNumber(0);
@@ -98,7 +103,7 @@ const GameDisplay: React.FC<Props> = ({
         <QuestionCardParagraph>Loading Questions ....</QuestionCardParagraph>
       ) : null}
 
-      {!loading && !gameOver ? (
+      {!loading && !gameOver && !error ? (
         <QuestionCard
           questionNr={number + 1}
           totalQuestions={TOTAL_QUESTIONS}
@@ -109,6 +114,10 @@ const GameDisplay: React.FC<Props> = ({
           }
           callback={checkAnswer}
         />
+      ) : error ? (
+        <HeaderWrapper>
+          Hmmm...Something went wrong. Please refresh and try another category.
+        </HeaderWrapper>
       ) : null}
       {!loading &&
       !gameOver &&

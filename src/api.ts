@@ -22,14 +22,18 @@ export const fetchQuestions = async (
   difficulty: string | null,
   category: number | null
 ) => {
-  const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple&difficulty=${difficulty}`;
-  const data = await fetch(endpoint);
-  const jsonData = await data.json();
-  return jsonData.results.map((question: Question) => ({
-    ...question,
-    answers: shuffleArray([
-      ...question.incorrect_answers,
-      question.correct_answer,
-    ]),
-  }));
+  try {
+    const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple&difficulty=${difficulty}`;
+    const data = await fetch(endpoint);
+    const jsonData = await data.json();
+    return jsonData.results.map((question: Question) => ({
+      ...question,
+      answers: shuffleArray([
+        ...question.incorrect_answers,
+        question.correct_answer,
+      ]),
+    }));
+  } catch (error) {
+    console.log({ error });
+  }
 };
