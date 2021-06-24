@@ -15,6 +15,7 @@ export const AnswerChoice = styled.button`
   border: none;
   background-color: white;
   border-radius: 4px;
+  text-align: left;
 `;
 
 export const QuestionCardWrapper = styled.div`
