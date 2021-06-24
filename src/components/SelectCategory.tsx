@@ -1,4 +1,5 @@
 import React from 'react';
+import { SelectStyle } from './styles/globalStyles';
 
 const allCategories: { id: number; name: string }[] = [
   {
@@ -54,7 +55,7 @@ type Props = {
 const SelectCategory: React.FC<Props> = ({ setCategory }) => {
   return (
     <div>
-      <select
+      <SelectStyle
         onChange={(e) => setCategory(e.target.value)}
         style={{ width: 200, marginBottom: 10 }}
       >
@@ -64,7 +65,7 @@ const SelectCategory: React.FC<Props> = ({ setCategory }) => {
             {item.name}
           </option>
         ))}
-      </select>
+      </SelectStyle>
     </div>
   );
 };

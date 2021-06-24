@@ -29,3 +29,11 @@ export const Button = styled.button`
   border-radius: 4px;
   color: #333;
 `;
+
+export const SelectStyle = styled.select`
+  padding: 0.3rem;
+  color:   color: #333;
+  height: 2.2rem;
+  border: none;
+  border-radius: 4px;
+`;

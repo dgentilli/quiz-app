@@ -1,4 +1,5 @@
 import React from 'react';
+import { SelectStyle } from './styles/globalStyles';
 
 const difficultyLevels: string[] = ['easy', 'medium', 'hard'];
 
@@ -9,7 +10,7 @@ type Props = {
 const SelectDifficultyLevel: React.FC<Props> = ({ setDifficulty }) => {
   return (
     <div>
-      <select
+      <SelectStyle
         onChange={(e) => setDifficulty(e.target.value)}
         style={{ width: 200, marginBottom: 10 }}
       >
@@ -19,7 +20,7 @@ const SelectDifficultyLevel: React.FC<Props> = ({ setDifficulty }) => {
             {item}
           </option>
         ))}
-      </select>
+      </SelectStyle>
     </div>
   );
 };
